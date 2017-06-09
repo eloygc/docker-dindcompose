@@ -7,6 +7,7 @@ ARG glibc_version=2.25-r0
 
 RUN apk update && apk add --no-cache \
     curl openssl ca-certificates \
+    && apk add --no-cache bash git openssh \
     && curl -L https://github.com/docker/compose/releases/download/${compose_version}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose \
     && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub \
